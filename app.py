@@ -24,7 +24,7 @@ mysql = MySQL(app)
 
 UPLOAD_FOLDER = 'static/uploads'
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
-os.makedirs(UPLOAD_FOLDER, exist_ok=True)  # Ensure folder exists
+os.makedirs(UPLOAD_FOLDER, exist_ok=True)  # Ensure folder exist
 
 # --------------------------
 # Flask-Mail Configuration
