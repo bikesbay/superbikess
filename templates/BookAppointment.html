@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Appointment Form</title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/bookappointment.css') }}"
+    />
+  </head>
+  <body>
+    <header>
+      <a href="#" class="logo">Bikes-Bay</a>
+      <ul class="navbar">
+        <li><a href="{{ url_for('home') }}">Home</a></li>
+        <li><a href="{{ url_for('show_login') }}">Login</a></li>
+        <li><a href="{{ url_for('about') }}">About</a></li>
+        <li><a href="{{ url_for('contactUs') }}">Contact & Support</a></li>
+        <li><a href="{{ url_for('dashboard') }}">Profile</a></li>
+      </ul>
+    </header>
+
+    <div class="formbold-main-wrapper">
+      <div class="formbold-form-wrapper">
+        <form action="{{ url_for('book_appointment_page') }}" method="POST">
+          <!-- Full Name -->
+          <div class="formbold-mb-5">
+            <label for="name" class="formbold-form-label">Full Name</label>
+            <input
+              type="text"
+              name="name"
+              id="name"
+              placeholder="Full Name"
+              class="formbold-form-input"
+              required
+            />
+          </div>
+
+          <!-- Phone Number -->
+          <div class="formbold-mb-5">
+            <label for="phone" class="formbold-form-label">Phone Number</label>
+            <input
+              type="text"
+              name="phone"
+              id="phone"
+              placeholder="Enter your phone number"
+              class="formbold-form-input"
+              required
+            />
+          </div>
+
+          <!-- Vehicle Name -->
+          <div class="formbold-mb-5">
+            <label for="vehicle" class="formbold-form-label"
+              >Preferred Vehicle Model</label
+            >
+            <input
+              type="text"
+              name="vehicle"
+              id="vehicle"
+              placeholder="Enter vehicle name"
+              class="formbold-form-input"
+              required
+            />
+          </div>
+
+          <!-- Date & Time -->
+          <div class="flex flex-wrap formbold--mx-3">
+            <div class="w-full sm:w-half formbold-px-3">
+              <div class="formbold-mb-5">
+                <label for="date" class="formbold-form-label">Date</label>
+                <input
+                  type="date"
+                  name="date"
+                  id="date"
+                  class="formbold-form-input"
+                  required
+                />
+              </div>
+            </div>
+            <div class="w-full sm:w-half formbold-px-3">
+              <div class="formbold-mb-5">
+                <label for="time" class="formbold-form-label">Time</label>
+                <input
+                  type="time"
+                  name="time"
+                  id="time"
+                  class="formbold-form-input"
+                  required
+                />
+              </div>
+            </div>
+          </div>
+
+          <!-- Address Details -->
+          <div class="formbold-mb-5 formbold-pt-3">
+            <label class="formbold-form-label formbold-form-label-2"
+              >Address Details</label
+            >
+            <div class="flex flex-wrap formbold--mx-3">
+              <div class="w-full sm:w-half formbold-px-3">
+                <input
+                  type="text"
+                  name="area"
+                  id="area"
+                  placeholder="Enter area"
+                  class="formbold-form-input"
+                  required
+                />
+              </div>
+              <div class="w-full sm:w-half formbold-px-3">
+                <input
+                  type="text"
+                  name="city"
+                  id="city"
+                  placeholder="Enter city"
+                  class="formbold-form-input"
+                  required
+                />
+              </div>
+              <div class="w-full sm:w-half formbold-px-3">
+                <input
+                  type="text"
+                  name="state"
+                  id="state"
+                  placeholder="Enter state"
+                  class="formbold-form-input"
+                  required
+                />
+              </div>
+              <div class="w-full sm:w-half formbold-px-3">
+                <input
+                  type="text"
+                  name="post_code"
+                  id="post-code"
+                  placeholder="Post Code"
+                  class="formbold-form-input"
+                  required
+                />
+              </div>
+            </div>
+          </div>
+
+          <!-- Driving License -->
+          <div class="formbold-mb-5">
+            <label class="formbold-form-label"
+              >Do you have a Driving License?</label
+            >
+            <div class="formbold-radio-group">
+              <label class="formbold-radio-label">
+                <input
+                  type="radio"
+                  name="driving_license"
+                  value="Yes"
+                  class="formbold-radio-input"
+                  required
+                />
+                Yes
+              </label>
+              <label class="formbold-radio-label">
+                <input
+                  type="radio"
+                  name="driving_license"
+                  value="No"
+                  class="formbold-radio-input"
+                  required
+                />
+                No
+              </label>
+            </div>
+          </div>
+
+          <!-- Submit Button -->
+          <div>
+            <button class="formbold-btn">Book Appointment</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <!-- JS to restrict past dates -->
+    <script>
+      const dateInput = document.getElementById("date");
+      const today = new Date();
+      today.setDate(today.getDate() + 3); // 3 days after today
+      const yyyy = today.getFullYear();
+      const mm = String(today.getMonth() + 1).padStart(2, "0");
+      const dd = String(today.getDate()).padStart(2, "0");
+      const minDate = `${yyyy}-${mm}-${dd}`;
+      dateInput.min = minDate;
+      dateInput.value = minDate; // Optional: pre-fill with minimum date
+    </script>
+
+    <script src="{{ url_for('static', filename='js/StandardAll.js') }}"></script>
+  </body>
+</html>
