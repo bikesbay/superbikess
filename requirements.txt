@@ -1,6 +1,6 @@
 # Flask and core dependencies
 Flask==3.0.3
-Flask-MySQLdb==1.1.0
+Flask-MySQLdb==2.0.0
 Flask-Mail==0.10.0
 
 # For MySQL compatibility
